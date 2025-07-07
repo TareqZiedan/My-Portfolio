@@ -17,7 +17,7 @@ const MainNav = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   return (
-    <nav className="bg-zinc-900 shadow-lg p-6 w-full h-full flex flex-col gap-6 overflow-hidden">
+    <nav className="flex h-full w-full flex-col gap-6 overflow-hidden bg-zinc-200 p-6 shadow-lg dark:bg-zinc-900">
       <ul className="flex flex-col justify-between">
         {navItems.map((item) => (
           <li
@@ -25,26 +25,29 @@ const MainNav = () => {
             onClick={() => router.push(item.path)}
             onMouseEnter={() => setHoveredItem(item.path)}
             onMouseLeave={() => setHoveredItem(null)}
-            className={`text-lg h-14 flex items-center transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer px-4 py-2 relative ${
+            className={`relative flex h-14 cursor-pointer items-center px-4 py-2 text-lg font-medium focus:ring-2 focus:ring-blue-400 focus:outline-none ${
               pathname === item.path
                 ? "bg-black text-blue-600"
-                : "text-zinc-200 hover:bg-zinc-800 hover:text-blue-600"
+                : "text-zinc-200 hover:bg-black hover:text-blue-600"
             }`}
           >
             {(pathname === item.path || hoveredItem === item.path) && (
-              <div className="bg-white mb-2 w-80 h-10 absolute -rotate-4 z-0"></div>
+              <div className="absolute z-0 mb-2 h-10 w-80 -rotate-4 bg-white"></div>
             )}
-            <span className="mx-3 z-10 text-xl">{item.icon}</span>
-            <p className="ml-4 z-10">{item.label}</p>
+            <span className="z-10 mx-3 text-xl">{item.icon}</span>
+            <p className="z-10 ml-4">{item.label}</p>
           </li>
         ))}
         <li>
           <a
             href="/Tareq Ziedan - Resume - 2025.pdf"
             download
-            className="text-lg h-16 flex items-center transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer px-4 py-2 text-zinc-700 dark:text-zinc-200 hover:bg-blue-100 dark:hover:bg-zinc-800 hover:text-blue-600"
+            className="relative flex h-14 cursor-pointer items-center bg-zinc-900 px-4 py-2 text-lg font-medium text-zinc-200 transition-colors hover:text-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none"
             // className="h-16 w-full flex items-center bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold px-4 py-2 shadow-md transition-all duration-300"
           >
+            {hoveredItem === "/Tareq Ziedan - Resume - 2025.pdf" && (
+              <div className="absolute z-0 mb-2 h-10 w-80 -rotate-4 bg-white dark:bg-black"></div>
+            )}
             <span className="mx-3 text-xl">
               <FiDownload />
             </span>

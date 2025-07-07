@@ -1,36 +1,84 @@
+"use client";
+
+import { useState } from "react";
+
 const Contact = () => {
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("https://formspree.io/f/mblyekgk", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (res.ok) {
+        form.reset();
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
+      setStatus("error");
+      console.log(err);
+    }
+  };
+
   return (
-    <form className="space-y-4">
-      <div>
-        <label className="block mb-1 font-medium" htmlFor="email">
+    <form onSubmit={handleSubmit} className="m-2 space-y-4">
+      <div className="rounded-lg border border-gray-300">
+        <label className="ml-2" htmlFor="email">
           Email
         </label>
-        <input
-          type="email"
-          id="email"
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-black dark:text-white"
-          placeholder="your@email.com"
-          required
-        />
+        <div className="m-2">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            className="w-md bg-zinc-900 text-white focus:outline-0"
+            placeholder="your@email.com"
+            required
+          />
+        </div>
       </div>
-      <div>
-        <label className="block mb-1 font-medium" htmlFor="message">
+      <div className="rounded-lg border border-zinc-200">
+        <label className="ml-2" htmlFor="message">
           Message
         </label>
-        <textarea
-          id="message"
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-black dark:text-white"
-          rows={4}
-          placeholder="Your message..."
-          required
-        ></textarea>
+        <div className="m-2">
+          <textarea
+            name="message"
+            id="message"
+            className="w-full bg-zinc-900 text-white focus:outline-0"
+            rows={4}
+            placeholder="Your message..."
+            required
+          ></textarea>
+        </div>
       </div>
       <button
         type="submit"
-        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-2 rounded transition-colors"
+        className="h-10 w-20 cursor-pointer rounded border border-zinc-200 text-zinc-200 hover:border-black hover:bg-zinc-200 hover:text-zinc-900"
       >
         Send
       </button>
+
+      {status === "success" && (
+        <p className="font-medium text-green-500">Message sent successfully!</p>
+      )}
+      {status === "error" && (
+        <p className="font-medium text-red-500">
+          Something went wrong. Please try again.
+        </p>
+      )}
     </form>
   );
 };

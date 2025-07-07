@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import MainNav from "@/components/MainNav";
+import Header from "./components/Header";
+import MainNav from "./components/MainNav";
 
-export const metadata: Metadata = {};
+export const metadata: Metadata = {
+  title: "Tareq Ziedan | Frontend Developer",
+  description: "Portfolio website of Tareq Ziedan",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -11,16 +18,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-zinc-900 text-white">
         <div className="flex min-h-screen">
-          <aside className="w-72 bg-gray-100 dark:bg-black p-6">
+          <aside className="w-72 border-r border-zinc-800 bg-zinc-900 p-6">
             <MainNav />
           </aside>
-          <div className="flex-1 flex flex-col justify-between">
-            <header className="h-14 w-full bg-zinc-900 flex items-center px-4">
-              {/* Add your header content here */}
-            </header>
-            <main className="flex-1 p-8">{children}</main>
+          <div className="flex min-w-0 flex-1 flex-col">
+            <Header />
+            <main className="flex-1 overflow-y-auto p-8">{children}</main>
           </div>
         </div>
       </body>

@@ -21,14 +21,14 @@ const skillIcons: Record<string, React.ReactNode> = {
   TYPESCRIPT: <SiTypescript className="text-blue-600" />,
   TAILWINDCSS: <SiTailwindcss className="text-cyan-400" />,
   RESPONSIVE: <MdDevices className="text-green-500" />,
-  "GIT/GITHUB": <SiGithub className="text-gray-800" />,
+  "GIT/GITHUB": <SiGithub className="text-zinc-200" />,
   "REACT JS": <SiReact className="text-cyan-500" />,
   "RESTFUL API": <MdApi className="text-green-400" />,
   REDUX: <SiRedux className="text-purple-500" />,
   "REDUX TOOLKIT": <SiRedux className="text-purple-400" />,
   "REACT ROUTER": <SiReactrouter className="text-pink-500" />,
   "REACT QUERY": <SiReactquery className="text-red-400" />,
-  "NEXT JS": <SiNextdotjs className="text-black" />,
+  "NEXT JS": <SiNextdotjs className="text-zinc-200" />,
 };
 
 const skills = [
@@ -49,24 +49,24 @@ const skills = [
 ];
 
 const Skills = () => (
-  <div className="mx-8 p-6 w-auto">
-    <h2 className="text-center text-4xl font-bold mb-16 mt-8 text-zinc-800">
+  <div className="mx-8 w-auto p-6">
+    <h2 className="mt-8 mb-12 text-center text-4xl font-bold text-zinc-200">
       Frontend Development
     </h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
+    <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-4">
       {skills.map((skill) => (
         <div
           key={skill.name}
-          className="cursor-pointer flex items-center bg-white hover:bg-gray-100 rounded-lg p-5 gap-4"
+          className="flex items-center gap-4 rounded-lg bg-black p-5 text-zinc-200 hover:scale-110 hover:bg-zinc-800"
         >
-          <div className="flex-shrink-0 flex items-center text-6xl h-16 w-16 justify-center">
-            {skillIcons[skill.name] || <SiReact className="text-gray-400" />}
+          <div className="m-2 flex h-16 w-16 flex-shrink-0 items-center justify-center text-6xl">
+            {skillIcons[skill.name]}
           </div>
-          <div className="flex flex-col justify-center h-16">
-            <span className="text-lg font-semibold text-zinc-900">
+          <div className="flex h-16 flex-col justify-center">
+            <span className="text-lg font-semibold text-zinc-200">
               {skill.name}
             </span>
-            <span className="mt-1 font-medium px-3 py-1 rounded-full w-fit">
+            <span className="mt-1 w-fit rounded-full px-3 py-1 font-medium">
               {skill.level}
             </span>
           </div>

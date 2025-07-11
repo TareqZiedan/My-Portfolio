@@ -38,20 +38,22 @@ const MainNav = () => {
             <p className="z-10 ml-4">{item.label}</p>
           </li>
         ))}
-        <li>
+        <li
+          onMouseEnter={() => setHoveredItem("Resume")}
+          onMouseLeave={() => setHoveredItem(null)}
+        >
           <a
             href="/Tareq Ziedan - Resume - 2025.pdf"
             download
-            className="relative flex h-14 cursor-pointer items-center bg-zinc-900 px-4 py-2 text-lg font-medium text-zinc-200 transition-colors hover:text-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            // className="h-16 w-full flex items-center bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold px-4 py-2 shadow-md transition-all duration-300"
+            className="relative flex h-14 cursor-pointer items-center bg-zinc-900 px-4 py-2 text-lg font-medium text-zinc-200 transition-colors hover:bg-black hover:text-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none"
           >
-            {hoveredItem === "/Tareq Ziedan - Resume - 2025.pdf" && (
-              <div className="absolute z-0 mb-2 h-10 w-80 -rotate-4 bg-white dark:bg-black"></div>
+            {hoveredItem === "Resume" && (
+              <div className="absolute z-0 mb-2 h-10 w-80 -rotate-4 bg-white"></div>
             )}
-            <span className="mx-3 text-xl">
+            <span className="z-10 mx-3 text-xl">
               <FiDownload />
             </span>
-            <p className="ml-4">Download My Resume</p>
+            <p className="z-10 ml-4">Download My Resume</p>
           </a>
         </li>
       </ul>

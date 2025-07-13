@@ -45,7 +45,7 @@ const MainNav = () => {
           <a
             href="/Tareq Ziedan - Resume - 2025.pdf"
             download
-            className="relative flex h-14 cursor-pointer items-center bg-zinc-900 px-4 py-2 text-lg font-medium text-zinc-200 transition-colors hover:bg-black hover:text-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="relative flex h-14 cursor-pointer items-center bg-zinc-900 px-4 py-2 text-lg font-medium text-zinc-200 transition-colors hover:bg-black hover:text-blue-600 focus:ring-0 focus:outline-none"
           >
             {hoveredItem === "Resume" && (
               <div className="absolute z-0 mb-2 h-10 w-80 -rotate-4 bg-white"></div>

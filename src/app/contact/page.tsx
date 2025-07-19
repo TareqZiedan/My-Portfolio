@@ -33,43 +33,55 @@ const Contact = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="m-2 space-y-4">
-      <div className="rounded-lg border border-gray-300">
-        <label className="ml-2" htmlFor="email">
+    <form
+      onSubmit={handleSubmit}
+      className="m-2 h-auto w-158 space-y-4 overflow-hidden border-8 border-black bg-zinc-200"
+    >
+      <div className="rounded-lg">
+        <label className="ml-2 font-bold text-black" htmlFor="email">
           Email
         </label>
-        <div className="m-2">
+        <div className="m-2 flex h-10 w-150 items-center border-2 border-zinc-200 bg-black shadow-md shadow-black">
           <input
             type="email"
             name="email"
             id="email"
-            className="w-md bg-zinc-900 text-white focus:outline-0"
+            className="ml-2 w-146 font-bold text-white placeholder-zinc-200 focus:outline-0"
             placeholder="your@email.com"
             required
           />
         </div>
       </div>
-      <div className="rounded-lg border border-zinc-200">
-        <label className="ml-2" htmlFor="message">
+      <div className="rounded-lg">
+        <label className="ml-2 font-bold text-black" htmlFor="message">
           Message
         </label>
-        <div className="m-2">
+        <div className="m-2 w-150 border-2 border-zinc-200 bg-black shadow-md shadow-black">
           <textarea
             name="message"
             id="message"
-            className="w-full bg-zinc-900 text-white focus:outline-0"
+            className="mt-2 ml-2 max-h-45 w-146 font-bold text-white placeholder-zinc-200 focus:outline-0"
             rows={4}
             placeholder="Your message..."
             required
           ></textarea>
         </div>
       </div>
-      <button
-        type="submit"
-        className="h-10 w-20 cursor-pointer rounded border border-zinc-200 text-zinc-200 hover:border-black hover:bg-zinc-200 hover:text-zinc-900"
-      >
-        Send
-      </button>
+      <div className="mt-10 flex items-center justify-center">
+        <div className="absolute left-144 z-0 h-10 w-20 -rotate-5 bg-black"></div>
+        <button
+          type="submit"
+          className="relative z-10 ml-2 h-10 w-20 cursor-pointer border-2 border-black bg-zinc-200 font-bold text-black shadow shadow-black hover:bg-white"
+        >
+          Send
+        </button>
+      </div>
+      <div className="fixed top-[18.75rem] h-100 w-400 -rotate-31 bg-black"></div>
+      <div className="fixed top-[18.75rem] flex h-100 w-400 -rotate-36 items-center justify-center bg-zinc-200">
+        <p className="flex h-50 items-center border-[20px] border-black p-20 text-center text-7xl font-bold text-black">
+          Love Love Love Love Love
+        </p>
+      </div>
 
       {status === "success" && (
         <p className="font-medium text-green-500">Message sent successfully!</p>

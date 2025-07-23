@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   SiHtml5,
@@ -49,31 +51,35 @@ const skills = [
 ];
 
 const Skills = () => (
-  <div className="mx-8 w-auto p-6">
-    <h2 className="mt-8 mb-12 text-center text-4xl font-bold text-zinc-200">
+  <section className="flex w-full flex-col items-center justify-center overflow-hidden px-4 py-12 sm:px-8 md:px-16">
+    <h2 className="mt-10 mb-16 text-center text-4xl font-bold text-zinc-200">
       Frontend Development
     </h2>
-    <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-4">
+
+    <div className="mb-4 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-12 md:grid-cols-3 md:gap-10 lg:gap-12">
       {skills.map((skill) => (
         <div
           key={skill.name}
-          className="flex items-center gap-4 rounded-lg bg-black p-5 text-zinc-200 hover:scale-110 hover:bg-zinc-800"
+          className="relative flex h-[6rem] w-[20rem] items-center justify-center hover:scale-105 sm:w-[12rem]"
         >
-          <div className="m-2 flex h-16 w-16 flex-shrink-0 items-center justify-center text-6xl">
-            {skillIcons[skill.name]}
-          </div>
-          <div className="flex h-16 flex-col justify-center">
-            <span className="text-lg font-semibold text-zinc-200">
-              {skill.name}
-            </span>
-            <span className="mt-1 w-fit rounded-full px-3 py-1 font-medium">
-              {skill.level}
-            </span>
+          <div className="absolute inset-0 -rotate-6 bg-zinc-200" />
+          <div className="relative flex h-full w-full items-center gap-4 border-2 border-zinc-200 bg-black p-5 text-zinc-200 transition-transform duration-200">
+            <div className="flex h-[4rem] w-[4rem] items-center justify-center text-5xl">
+              {skillIcons[skill.name]}
+            </div>
+            <div className="flex flex-col">
+              <span className="mr-2 cursor-default text-lg font-semibold">
+                {skill.name}
+              </span>
+              <span className="mt-1 cursor-default rounded-full text-sm text-zinc-400">
+                {skill.level}
+              </span>
+            </div>
           </div>
         </div>
       ))}
     </div>
-  </div>
+  </section>
 );
 
 export default Skills;

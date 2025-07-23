@@ -17,7 +17,7 @@ const MainNav = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   return (
-    <nav className="flex h-full w-full flex-col gap-6 overflow-hidden bg-zinc-200 p-6 shadow-lg dark:bg-zinc-900">
+    <nav className="flex h-full w-full flex-col gap-6 overflow-x-hidden overflow-y-auto bg-zinc-900 p-6 shadow-lg">
       <ul className="flex flex-col justify-between">
         {navItems.map((item) => (
           <li

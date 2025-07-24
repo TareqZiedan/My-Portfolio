@@ -40,7 +40,7 @@ export default function ResponsiveLayout({
               transition={{ type: "tween", duration: 0.3 }}
               className="fixed inset-y-0 left-0 z-30 w-[18rem] border-r border-zinc-800 bg-zinc-900 p-6 shadow-lg lg:hidden"
             >
-              <MainNav />
+              <MainNav onLinkClick={toggleSidebar} />
             </motion.aside>
 
             {/* Overlay */}

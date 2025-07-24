@@ -11,10 +11,19 @@ const navItems = [
   { label: "Skills", path: "/skills", icon: <FiAward /> },
 ];
 
-const MainNav = () => {
+type MainNavProps = {
+  onLinkClick?: () => void;
+};
+
+const MainNav = ({ onLinkClick }: MainNavProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+
+  const handleNavClick = (path: string) => {
+    router.push(path);
+    onLinkClick?.(); // <-- Close sidebar if handler exists
+  };
 
   return (
     <nav className="flex h-full w-full flex-col gap-6 overflow-x-hidden overflow-y-auto bg-zinc-900 p-6 shadow-lg">
@@ -22,7 +31,7 @@ const MainNav = () => {
         {navItems.map((item) => (
           <li
             key={item.path}
-            onClick={() => router.push(item.path)}
+            onClick={() => handleNavClick(item.path)}
             onMouseEnter={() => setHoveredItem(item.path)}
             onMouseLeave={() => setHoveredItem(null)}
             className={`relative flex h-14 cursor-pointer items-center px-4 py-2 text-lg font-medium focus:ring-2 focus:ring-blue-400 focus:outline-none ${
